@@ -23,19 +23,50 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
+
+  let hasilLooping = [];
+  let panjangData = dataYangAkanDilooping.length; //100
+  let nama = "";
+
+  for(let i = 0; i < panjangData; i++) 
+  {
+    nama = dataYangAkanDilooping[i]['namaDepan']+" "+dataYangAkanDilooping[i]['namaBelakang'];
+
+    hasilLooping[i] = nama;
+    hasilLooping[i] = hasilLooping[i];
+  }
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = null;
+  // let jumlahPria = null;
+  let jumlahPria = 0;
+  for(let i = 0; i < panjangData; i++) 
+  {
+    let jikaPria = dataYangAkanDilooping[i]["jenisKelamin"] == "M";
+    
+    if(jikaPria)
+    {
+      jumlahPria += 1;
+    }
+  }
 
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = null;
+  // let jumlahWanita = null;
+  let jumlahWanita = 0;
+  for(let i = 0; i < panjangData; i++) 
+  {
+    let jikaWanita = dataYangAkanDilooping[i]["jenisKelamin"] == "F";
+
+    if(jikaWanita)
+    {
+      jumlahWanita += 1;
+    }
+  }
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,7 +79,28 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
+  // let komentar = null;
+  let komentar = "";
+
+  if(jumlahPria > jumlahWanita)
+  {
+    komentar = "Jumlah Pria lebih banyak dari Wanita";
+  }
+
+  else if(jumlahWanita > jumlahPria)
+  {
+    komentar = "Jumlah Wanita lebih banyak dari Pria";
+  }
+
+  else if(jumlahPria == jumlahWanita)
+  {
+    komentar = "Jumlah Pria dan Wanita berimbang";
+  }
+
+  else
+  {
+    komentar = "Jumlah Pria dan Wanita berimbang";
+  }
 
   // ! JANGAN DIMODIFIKASI
   return {
@@ -57,6 +109,7 @@ function lakukanLooping(arrPegawai) {
     jumlahWanita,
     komentar,
   };
+
 }
 
 function main(data) {
@@ -65,6 +118,7 @@ function main(data) {
   console.log(hasil.hasilLooping);
   console.log(hasil.jumlahPria);
   console.log(hasil.jumlahWanita);
+  console.log(hasil.komentar);
 
   return hasil;
 }
